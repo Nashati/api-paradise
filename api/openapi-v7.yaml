@@ -1,0 +1,461 @@
+openapi: 3.0.0
+servers:
+  - description: Jokes Server
+    url: http://localhost:3030/api
+info:
+    version: "1.0.0"
+    title: More robust API
+    description: |
+      You can make your API more robust by:
+      1. Add query parameters for filtering, sorting and searching
+      2. Add ability for selecting returned fields
+    contact:
+        email: nashat.ib@gmail.com
+paths:
+  /v7/jokes:
+    get:
+      tags:
+        - 'Jokes'
+      summary: get all jokes
+      parameters:
+        - name: historySize
+          description: Size of returned history list
+          in: query
+          schema:
+            type: integer
+        - name: historyNumber
+          description: history page number
+          in: query
+          schema:
+            type: integer
+        - name: safe
+          description: filter jokes by safety
+          in: query
+          schema:
+            type: boolean
+          example: true
+        - name: category
+          description: filter jokes by category
+          in: query
+          schema:
+            type: string
+        - name: sort
+          description: sort jokes
+          in: query
+          schema:
+            type: string
+          example: sort=-last_updated
+      responses:
+        '200':
+          description: All jokes exist
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Joke'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - 'Jokes'
+      summary: Create a new joke
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Joke'
+            example:
+              id: 0
+              category: 'Programming'
+              body: 'Programmer (noun.): A machine that turns coffee into code'
+              safe: true
+      responses:
+        '201':
+          description: Joke added
+          headers:
+            Location:
+              schema:
+                type: string
+              example: http://localhost:3030/v7/jokes/6
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Joke'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+  /v7/jokes/{id}:
+    get:
+      tags:
+        - 'Jokes'
+      summary: get joke by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke ID
+          required: true
+          schema:
+            type: string
+        - name: historySize
+          description: Size of returned history list
+          in: query
+          schema:
+            type: integer
+        - name: historyNumber
+          description: history page number
+          in: query
+          schema:
+            type: integer
+        - name: fields
+          description: Joke returned fields
+          in: query
+          schema:
+            type: string
+          example: id,body,safe
+      responses:
+        '200':
+          description: Joke with spesific id
+          headers:
+            Link:
+              schema:
+                type: string
+              example: http://localhost:3030/v7/jokes/{id}?historyNumber=2&historySize=100>; rel="next", <http://localhost:3030/v7/jokes/{id}?historyNumber=3&historySize=100>; rel="last"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Joke'
+        '400':
+          description: Bad request
+        '404':
+          description: Joke with spesific id doesn't exist
+        '500':
+          description: Internal server error
+    put:
+      tags:
+        - 'Jokes'
+      summary: Update a joke by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Joke'
+            example:
+              category: 'Dark'
+              body: 'Updated body'
+              safe: false
+      responses:
+        '200':
+          description: Joke updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Joke'
+        '400':
+          description: Bad request
+        '404':
+          description: Joke with spesific id doesn't exist
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+        - 'Jokes'
+      summary: Delete a joke by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Joke deleted successfully
+        '400':
+          description: Bad request
+        '404':
+          description: Joke with spesific id doesn't exist
+        '500':
+          description: Internal server error
+    patch:
+      tags:
+        - 'Jokes'
+      summary: Partially update a joke
+      parameters:
+        - name: id
+          in: path
+          description: Joke ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Joke'
+            example:
+              safe: false
+      responses:
+        '200':
+          description: Joke updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Joke'
+        '400':
+          description: Bad request
+        '404':
+          description: Joke with spesific id doesn't exist
+        '500':
+          description: Internal server error
+  /v7/jokes/{id}/safe:
+    get:
+      tags:
+        - 'Jokes'
+      summary: Get safe field for joke by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Joke safe field
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  safe:
+                    type: boolean
+        '400':
+          description: Bad request
+        '404':
+          description: Joke with spesific id doesn't exist
+        '500':
+          description: Internal server error
+    put:
+      tags:
+        - 'Jokes'
+      summary: Update safe field for joke by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                safe:
+                  type: boolean
+      responses:
+        '200':
+          description: Joke safe field updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Joke'
+        '400':
+          description: Bad request
+        '404':
+          description: Joke with spesific id doesn't exist
+        '500':
+          description: Internal server error
+  /v7/categories:
+    get:
+      tags:
+        - 'Category'
+      summary: get all joke categores
+      responses:
+        '200':
+          description: All jokes categores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JokeCategory'
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - 'Category'
+      summary: create new joke category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JokeCategory'
+      responses:
+        '201':
+          description: Joke category added
+          headers:
+            Location:
+              schema:
+                type: string
+              example: http://localhost:3030/v7/categories/6
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokeCategory'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+  /v7/categories/{id}":
+    get:
+      tags:
+        - 'Category'
+      summary: get joke category by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke category ID
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Joke category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokeCategory'
+        '400':
+          description: Bad request
+        '404':
+          description: Joke category with spesific id doesn't exist
+        '500':
+          description: Internal server error
+    put:
+      tags:
+        - 'Category'
+      summary: update joke category by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke category ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JokeCategory'
+      responses:
+        '200':
+          description: Joke category updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokeCategory'
+        '400':
+          description: Bad request
+        '404':
+          description: Joke category with spesific id doesn't exist
+        '500':
+          description: Internal server error
+    delete:
+      tags:
+        - 'Category'
+      summary: delete joke category by id
+      parameters:
+        - name: id
+          in: path
+          description: Joke category ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JokeCategory'
+      responses:
+        '204':
+          description: Joke category deleted
+        '400':
+          description: Bad request
+        '404':
+          description: Joke category with spesific id doesn't exist
+        '500':
+          description: Internal server error
+components:
+    schemas:
+      Joke:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: Joke id
+          category:
+            type: string
+            description: Joke category
+          body:
+            type: string
+            description: Joke body
+          safe:
+            type: boolean
+            description: Is joke safe
+          last_updated:
+            type: integer
+            description: Last updated
+          votes:
+            $ref: '#/components/schemas/VoteHistories'
+
+      VoteHistories:
+        type: object
+        properties:
+          amount:
+            type: integer
+          history:
+            type: array
+            items:
+              $ref: '#/components/schemas/VoteHistory'
+
+      VoteHistory:
+        type: object
+        properties:
+          id:
+            type: string
+          username:
+            type: string
+          up:
+            type: boolean
+          date:
+            type: integer
+
+      JokeCategory:
+        type: object
+        properties:
+          id:
+            type: string
+            description: Joke category id
+          name:
+            type: string
+            description: Joke category name
+          count:
+            type: integer
+            description: Joke category count
+          list:
+            type: array
+            items:
+              $ref: '#/components/schemas/Joke'

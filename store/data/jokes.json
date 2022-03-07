@@ -1,0 +1,211 @@
+[
+  {
+    "id": 57,
+    "category": "Programming",
+    "body": "\"Can I tell you a TCP joke?\"\n\"Please tell me a TCP joke.\"\n\"OK, I'll tell you a TCP joke.\"",
+    "safe": true,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 1000,
+      "history": [
+        {
+          "username" : "Nashat",
+          "up" : false,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Mooli",
+          "up" : true,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Tom",
+          "up" : true,
+          "date" :      1645484314
+        }
+      ]
+    }
+  },
+  {
+    "id": 275,
+    "category": "Dark",
+    "body": "My girlfriend's dog died, so I tried to cheer her up by getting her an identical one. It just made her more upset. She screamed at me, \"What am I supposed to do with two dead dogs?\"",
+    "safe": false,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 10,
+      "history": [
+        {
+          "username" : "Edan",
+          "up" : false,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Yuval",
+          "up" : true,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Elad",
+          "up" : true,
+          "date" :      1645484314
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "category": "Programming",
+    "body": "A guy walks into a bar and asks for 1.4 root beers.\nThe bartender says \"I'll have to charge you extra, that's a root beer float\".\nThe guy says \"In that case, better make it a double.\"",
+    "safe": true,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 1345,
+      "history": [
+        {
+          "username" : "Molli",
+          "up" : false,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Alex",
+          "up" : true,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Aran",
+          "up" : true,
+          "date" :      1645484314
+        }
+      ]
+    }
+  },
+  {
+    "id": 261,
+    "category": "Misc",
+    "body": "A perfectionist walked into a bar... apparently, the bar was not set high enough.",
+    "safe": true,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 1000,
+      "history": [
+        {
+          "username" : "Tom Weiss",
+          "up" : false,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Mooli",
+          "up" : true,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Elad Zada",
+          "up" : true,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Aran",
+          "up" : false,
+          "date" :      1645484314
+        }
+      ]
+    }
+  },
+  {
+    "id": 152,
+    "category": "Dark",
+    "body": "My ex had an accident. I told the paramedics the wrong blood type for her. She'll finally experience what rejection is really like.",
+    "safe": false,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 1000,
+      "history": [
+        {
+          "username" : "Tom",
+          "up" : false,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Mooli",
+          "up" : true,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Aran",
+          "up" : true,
+          "date" :      1645484314
+        }
+      ]
+    }
+  },
+  {
+    "id": 259,
+    "category": "Programming",
+    "body": "UDP is better in the COVID era since it avoids unnecessary handshakes.",
+    "safe": true,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 1,
+      "history": [
+        {
+          "username" : "Elad",
+          "up" : false,
+          "date" :      1645484314
+        }
+      ]
+    }
+  },
+  {
+    "id": 104,
+    "category": "Dark",
+    "body": "I'll never forget my Granddad's last words to me just before he died. \"Are you still holding the ladder?\"",
+    "safe": false,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 2,
+      "history": [
+        {
+          "username" : "Mooli",
+          "up" : true,
+          "date" :      1645484314
+        },
+        {
+          "username" : "Elad",
+          "up" : true,
+          "date" :      1645484314
+        }
+      ]
+    }
+  },
+  {
+    "id": 193,
+    "category": "Programming",
+    "body": "What is the most used language in programming?,Profanity.",
+    "safe": true,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 0
+    }
+  },
+  {
+    "id": 49,
+    "category": "Programming",
+    "body": ".NET developers are picky when it comes to food.,They only like chicken NuGet.",
+    "safe": true,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 0
+    }
+  },
+  {
+    "id": 96,
+    "category": "Dark",
+    "body": "I didn't vaccinate my 3 kids and the one that survived is fine!",
+    "safe": false,
+    "last_updated" : 1645537328,
+    "votes": {
+      "amount": 0
+    }
+  }
+]
